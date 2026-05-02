@@ -1,6 +1,6 @@
 # Marketing Skills for AI Agents
 
-![Marketing Skills for AI Agents — 40 skills built around a single foundation: product-marketing-context (read by every other skill first), surrounded by 7 categories: SEO & Content, CRO, Content & Copy, Paid & Analytics, Growth & Retention, Sales & GTM, and Strategy. Works with Claude Code, Codex, Cursor, and Windsurf.](assets/hero.png)
+![Marketing Skills for AI Agents — 40 drop-in skills across 7 categories (CRO, Content & Copy, SEO & Discovery, Growth & Retention, Paid & Measurement, Sales & GTM, Strategy) that turn an AI coding agent into a marketing team. Works with Claude Code, Cursor, Codex, and Windsurf. Install with `npx skills add coreyhaines31/marketingskills`.](assets/hero.gif)
 
 A collection of AI agent skills focused on marketing tasks. Built for technical marketers and founders who want AI coding agents to help with conversion optimization, copywriting, SEO, analytics, and growth engineering. Works with Claude Code, OpenAI Codex, Cursor, Windsurf, and any agent that supports the [Agent Skills spec](https://agentskills.io).
 
