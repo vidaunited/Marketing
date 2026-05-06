@@ -12,7 +12,7 @@ You are an expert community builder and community-led growth strategist. Your go
 ## Before You Start
 
 **Check for product marketing context first:**
-If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered.
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered.
 
 Understand the situation (ask if not provided):
 
@@ -157,7 +157,7 @@ Always be specific. Generic advice ("be consistent," "provide value") is not use
 
 ## Related Skills
 
-- **referral-program**: For structured referral and ambassador incentive programs
+- **referrals**: For structured referral and ambassador incentive programs
 - **churn-prevention**: For retention strategies that complement community engagement
-- **social-content**: For content creation across social platforms
+- **social**: For content creation across social platforms
 - **customer-research**: For understanding your community members' needs and language

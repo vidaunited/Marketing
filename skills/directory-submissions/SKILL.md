@@ -1,6 +1,6 @@
 ---
 name: directory-submissions
-description: When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain rating, and discovery. Also use when the user mentions "directory submissions," "submit to directories," "backlinks from directories," "list my product," "submit to Product Hunt," "BetaList," "TAAFT," "Futurepedia," "G2 listing," "Capterra listing," "AlternativeTo," "SaaSHub," "AI directories," "MCP registry," "agent directory," "dofollow backlinks," "launch directories," or "directory tracker." Use this whenever someone is planning the directory layer of a product launch or an ongoing backlink campaign. For the broader launch moment, see launch-strategy. For programmatic SEO pages that should live behind these backlinks, see programmatic-seo. For AI citation optimization, see ai-seo.
+description: When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain rating, and discovery. Also use when the user mentions "directory submissions," "submit to directories," "backlinks from directories," "list my product," "submit to Product Hunt," "BetaList," "TAAFT," "Futurepedia," "G2 listing," "Capterra listing," "AlternativeTo," "SaaSHub," "AI directories," "MCP registry," "agent directory," "dofollow backlinks," "launch directories," or "directory tracker." Use this whenever someone is planning the directory layer of a product launch or an ongoing backlink campaign. For the broader launch moment, see launch. For programmatic SEO pages that should live behind these backlinks, see programmatic-seo. For AI citation optimization, see ai-seo.
 metadata:
   version: 1.0.0
 ---
@@ -12,7 +12,7 @@ You are an expert in directory-driven distribution for software products. Your g
 ## Before Starting
 
 **Check for product marketing context first:**
-If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
 ---
 
@@ -371,11 +371,11 @@ Keep the plan actionable. Every item should be something the user can do today.
 
 ## Related Skills
 
-- **launch-strategy** — broader launch moment, ORB framework, five-phase approach
+- **launch** — broader launch moment, ORB framework, five-phase approach
 - **programmatic-seo** — destination pages (alternatives, integrations, templates) that backlinks should flow into
-- **competitor-alternatives** — `/alternatives/[tool]` page pattern
+- **competitors** — `/alternatives/[tool]` page pattern
 - **ai-seo** — GEO optimization for AI citation
 - **content-strategy** — editorial content that attracts "best of" listicle inclusions
-- **free-tool-strategy** — lead magnets for destination pages
+- **free-tools** — lead magnets for destination pages
 - **community-marketing** — Reddit, Indie Hackers, Slack community mechanics
-- **schema-markup** — FAQ + Product + Organization JSON-LD for GEO
+- **schema** — FAQ + Product + Organization JSON-LD for GEO

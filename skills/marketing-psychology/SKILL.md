@@ -12,7 +12,7 @@ You are an expert in applying psychological principles and mental models to mark
 ## How to Use This Skill
 
 **Check for product marketing context first:**
-If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before applying mental models. Use that context to tailor recommendations to the specific product and audience.
+If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md` in older setups), read it before applying mental models. Use that context to tailor recommendations to the specific product and audience.
 
 Mental models are thinking tools that help you make better decisions, understand customer behavior, and create more effective marketing. When helping users:
 
@@ -448,8 +448,8 @@ When facing a marketing challenge, consider:
 
 ## Related Skills
 
-- **page-cro**: Apply psychology to page optimization
+- **cro**: Apply psychology to page optimization
 - **copywriting**: Write copy using psychological principles
-- **popup-cro**: Use triggers and psychology in popups
-- **pricing-page optimization**: See page-cro for pricing psychology
-- **ab-test-setup**: Test psychological hypotheses
+- **popups**: Use triggers and psychology in popups
+- **pricing-page optimization**: See cro for pricing psychology
+- **ab-testing**: Test psychological hypotheses
