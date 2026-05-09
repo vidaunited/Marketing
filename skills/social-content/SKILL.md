@@ -401,6 +401,19 @@ Tools: CapCut (free), Descript, Captions.ai, Premiere Pro
 
 ---
 
+## Tool Integrations
+
+For implementation, see the [tools registry](../../tools/REGISTRY.md). Key tools for social content workflows:
+
+| Tool | Best For | MCP | Guide |
+|------|----------|:---:|-------|
+| **Buffer** | Multi-platform scheduling, queue management, analytics | - | [buffer.md](../../tools/integrations/buffer.md) |
+| **TweetClaw** | X/Twitter search, tweet replies, posting, follower export, monitors | ✓ | [tweetclaw.md](../../tools/integrations/tweetclaw.md) |
+
+Use Buffer when the workflow is calendar-first and cross-platform. Use TweetClaw when the workflow is X/Twitter-specific and needs both research and execution.
+
+---
+
 ## Related Skills
 
 - **copywriting**: For longer-form content that feeds social

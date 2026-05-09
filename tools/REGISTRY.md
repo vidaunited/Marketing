@@ -79,6 +79,7 @@ Quick reference for AI agents to discover tool capabilities and integration meth
 | gong | Revenue Intelligence | ✓ | - | - | - | [gong.md](integrations/gong.md) |
 | airops | AI Content | ✓ | - | [✓](clis/airops.js) | - | [airops.md](integrations/airops.md) |
 | buffer | Social | ✓ | - | [✓](clis/buffer.js) | - | [buffer.md](integrations/buffer.md) |
+| tweetclaw | Social | ✓ | ✓ | - | - | [tweetclaw.md](integrations/tweetclaw.md) |
 | wistia | Video | ✓ | - | [✓](clis/wistia.js) | - | [wistia.md](integrations/wistia.md) |
 | heygen | Video | ✓ | ✓ | - | ✓ | [heygen.md](integrations/heygen.md) |
 | hyperframes | Video | - | - | ✓ | ✓ | [hyperframes.md](integrations/hyperframes.md) |
@@ -257,8 +258,9 @@ Social media scheduling, management, and analytics.
 | Tool | Best For | Notes |
 |------|----------|-------|
 | **buffer** | Social scheduling, analytics | Multi-platform |
+| **tweetclaw** | X/Twitter search, posting, replies, follower export, monitors | OpenClaw plugin + MCP |
 
-**Agent recommendation**: Buffer for scheduling and analytics across social platforms.
+**Agent recommendation**: Buffer for multi-platform scheduling and queue management. Use TweetClaw when the workflow is specifically X/Twitter and needs both research and execution.
 
 ### Video
 
