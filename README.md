@@ -168,9 +168,25 @@ npx skillkit install coreyhaines31/marketingskills --skill cro copywriting
 npx skillkit install coreyhaines31/marketingskills --list
 ```
 
-## Upgrading from v1.0
+## Upgrading from v1.x to v2.0
 
-Skills now use `.agents/` instead of `.claude/` for the product marketing context file, and the filename was shortened from `product-marketing-context.md` to `product-marketing.md` in v2.0. Move your existing context file:
+v2.0 renames 17 skills and consolidates `page-cro` + `form-cro` into a single `cro` skill. If you installed the v1.x skills, you'll have **stale old-name folders** in your install directory after upgrading — the new skills install alongside the old ones, so you'll see both `skills/page-cro/` and `skills/cro/`, etc. Clean them up:
+
+```bash
+# From the directory where you installed the skills (e.g., .agents/skills/ or .claude/skills/)
+rm -rf page-cro form-cro \
+       ab-test-setup analytics-tracking aso-audit competitor-alternatives \
+       email-sequence free-tool-strategy launch-strategy onboarding-cro \
+       paid-ads paywall-upgrade-cro popup-cro pricing-strategy \
+       product-marketing-context referral-program schema-markup \
+       signup-flow-cro social-content
+```
+
+Then reinstall the v2.0 skills via your usual method (e.g., `npx skills add coreyhaines31/marketingskills`).
+
+### Migrate the product marketing context file
+
+In v2.0 the context file moved from `.claude/` to `.agents/` and was renamed from `product-marketing-context.md` to `product-marketing.md`. Move your existing context file:
 
 ```bash
 mkdir -p .agents
@@ -181,6 +197,30 @@ mv .claude/product-marketing-context.md .agents/product-marketing.md 2>/dev/null
 ```
 
 Skills will still check `.claude/` and the legacy `product-marketing-context.md` filename as fallbacks, so nothing breaks if you don't migrate.
+
+### Full rename map
+
+| Old | New |
+|-----|-----|
+| `ab-test-setup` | `ab-testing` |
+| `analytics-tracking` | `analytics` |
+| `aso-audit` | `aso` |
+| `competitor-alternatives` | `competitors` |
+| `email-sequence` | `emails` |
+| `form-cro` | merged into `cro` |
+| `free-tool-strategy` | `free-tools` |
+| `launch-strategy` | `launch` |
+| `onboarding-cro` | `onboarding` |
+| `page-cro` | `cro` |
+| `paid-ads` | `ads` |
+| `paywall-upgrade-cro` | `paywalls` |
+| `popup-cro` | `popups` |
+| `pricing-strategy` | `pricing` |
+| `product-marketing-context` | `product-marketing` |
+| `referral-program` | `referrals` |
+| `schema-markup` | `schema` |
+| `signup-flow-cro` | `signup` |
+| `social-content` | `social` |
 
 ## Usage
 
