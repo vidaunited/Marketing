@@ -26,18 +26,18 @@ Skills reference each other and build on shared context. The `product-marketing`
                                                │
     ┌──────────────┬─────────────┬─────────────┼─────────────┬──────────────┬──────────────┐
     ▼              ▼             ▼             ▼             ▼              ▼              ▼
-┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────┐ ┌──────────┐ ┌─────────────┐ ┌───────────┐
-│  SEO &   │ │   CRO    │ │Content & │ │  Paid &    │ │ Growth & │ │  Sales &    │ │ Strategy  │
-│ Content  │ │          │ │   Copy   │ │Measurement │ │Retention │ │    GTM      │ │           │
-├──────────┤ ├──────────┤ ├──────────┤ ├────────────┤ ├──────────┤ ├─────────────┤ ├───────────┤
-│seo-audit │ │cro       │ │copywritng│ │ads         │ │referrals │ │revops       │ │mktg-ideas │
-│ai-seo    │ │signup    │ │copy-edit │ │ad-creative │ │free-tools│ │sales-enable │ │mktg-psych │
-│site-arch │ │onboarding│ │cold-email│ │ab-testing  │ │churn-    │ │launch       │ │customer-  │
-│programm  │ │popups    │ │emails    │ │analytics   │ │ prevent  │ │pricing      │ │ research  │
-│schema    │ │paywalls  │ │social    │ │            │ │community │ │competitors  │ │           │
-│content   │ │          │ │video     │ │            │ │lead-magnt│ │comp-profile │ │           │
-│aso       │ │          │ │image     │ │            │ │co-mktg   │ │directory    │ │           │
-└────┬─────┘ └────┬─────┘ └────┬─────┘ └─────┬──────┘ └────┬─────┘ └──────┬──────┘ └─────┬─────┘
+┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────┐ ┌──────────┐ ┌─────────────┐ ┌────────────┐
+│  SEO &   │ │   CRO    │ │Content & │ │  Paid &    │ │ Growth & │ │  Sales &    │ │ Strategy   │
+│ Content  │ │          │ │   Copy   │ │Measurement │ │Retention │ │    GTM      │ │            │
+├──────────┤ ├──────────┤ ├──────────┤ ├────────────┤ ├──────────┤ ├─────────────┤ ├────────────┤
+│seo-audit │ │cro       │ │copywritng│ │ads         │ │referrals │ │revops       │ │mktg-ideas  │
+│ai-seo    │ │signup    │ │copy-edit │ │ad-creative │ │free-tools│ │sales-enable │ │mktg-psych  │
+│site-arch │ │onboarding│ │cold-email│ │ab-testing  │ │churn-    │ │launch       │ │customer-   │
+│programm  │ │popups    │ │emails    │ │analytics   │ │ prevent  │ │pricing      │ │ research   │
+│schema    │ │paywalls  │ │social    │ │            │ │community │ │competitors  │ │ugc-creator-│
+│content   │ │          │ │video     │ │            │ │lead-magnt│ │comp-profile │ │ planner    │
+│aso       │ │          │ │image     │ │            │ │co-mktg   │ │directory    │ │            │
+└────┬─────┘ └────┬─────┘ └────┬─────┘ └─────┬──────┘ └────┬─────┘ └──────┬──────┘ └──────┬─────┘
      │            │            │              │             │              │              │
      └────────────┴─────┬──────┴──────────────┴─────────────┴──────────────┴──────────────┘
                         │
@@ -94,6 +94,7 @@ See each skill's **Related Skills** section for the full dependency map.
 | [signup](skills/signup/) | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the... |
 | [site-architecture](skills/site-architecture/) | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal... |
 | [social](skills/social/) | When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram,... |
+| [ugc-creator-planner](skills/ugc-creator-planner/) | When the user wants to create, organize, or automate a planner/calendar for UGC creators, content creators, influencers,... |
 | [video](skills/video/) | When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use... |
 <!-- SKILLS:END -->
 
@@ -263,6 +264,7 @@ You can also invoke skills directly:
 - `cold-email` - B2B cold outreach emails and sequences
 - `emails` - Automated email flows
 - `social` - Social media content
+- `ugc-creator-planner` - UGC creator planner, calendar, deadlines, reminders, and brand deal tracking
 - `image` - AI image generation, design tools, and optimization
 
 ### SEO & Discovery
@@ -295,6 +297,7 @@ You can also invoke skills directly:
 - `marketing-psychology` - Mental models and psychology
 - `launch` - Product launches and announcements
 - `pricing` - Pricing, packaging, and monetization
+- `ugc-creator-planner` - Creator operations, planner/calendar systems, deadlines, reminders, and brand deal tracking
 
 ### Sales & RevOps
 - `revops` - Lead lifecycle, scoring, routing, pipeline management

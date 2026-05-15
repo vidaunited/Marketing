@@ -43,9 +43,14 @@ Current versions of all skills. Agents can compare against local versions to che
 | signup | 2.0.0 | 2026-05-05 |
 | site-architecture | 2.0.0 | 2026-05-05 |
 | social | 2.0.0 | 2026-05-05 |
+| ugc-creator-planner | 1.0.0 | 2026-05-15 |
 | video | 2.0.0 | 2026-05-05 |
 
 ## Recent Changes
+
+### 2026-05-15
+- Added `ugc-creator-planner` skill for UGC creator planner/calendar systems, deadline automation, collaboration tracking, revenue tracking, outreach follow-ups, and portfolio gap analysis
+- Total skills: 41
 
 ### 2.0.0 (2026-05-05)
 
