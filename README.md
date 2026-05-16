@@ -95,6 +95,7 @@ See each skill's **Related Skills** section for the full dependency map.
 | [site-architecture](skills/site-architecture/) | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal... |
 | [social](skills/social/) | When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram,... |
 | [video](skills/video/) | When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use... |
+| [sequenzy-email-marketing](skills/sequenzy-email-marketing/) | When the user wants to build, launch, or analyze lifecycle email marketing in Sequenzy, including subscriber workflows, segments, templates, campaigns, onboarding sequences, winback flows, and transactional email QA. |
 <!-- SKILLS:END -->
 
 ## Installation
