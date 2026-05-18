@@ -209,6 +209,35 @@ Cross-reference both for high-confidence tech stack signals.
 
 ---
 
+## Firecrawl / Browserbase (single-target site research)
+
+**Use for**: Programmatically extracting content from a **prospect's own website** that you already found via discovery on platforms like Google Maps, Yelp, or LinkedIn. Not for scraping those platforms themselves.
+
+### Firecrawl
+
+- **Best for**: "Just give me the page as markdown" — Local SMB website status checks, B2B company about/team page extraction, structured field extraction
+- **Strengths**: Low overhead, returns clean LLM-ready markdown, handles most JS-rendered sites, has an MCP server
+- **API + MCP + SDKs**: Node, Python, Go, Rust
+
+### Browserbase
+
+- **Best for**: When you need real Chromium — JS-heavy pages, cookie consent dialogs, form submission to reach a contact page, session state
+- **Strengths**: Full browser control via Playwright/Puppeteer; Stagehand provides AI-friendly natural-language extraction; session recordings for debugging
+- **API + MCP (Stagehand) + SDKs**: Node, Python
+
+### Critical compliance line
+
+Both tools can technically point at any URL. The hard rule:
+
+- ✓ **OK**: extracting content from a single business's own website (`joescoffeeshop.com`) that you found through manual discovery
+- ✗ **NOT OK**: pointing them at `google.com/maps`, LinkedIn search results, Yelp listings, or any platform whose ToS prohibits bulk extraction
+
+Discovery happens on platforms (manual browser-assisted research). Extraction happens on individual public business sites.
+
+**Integrations**: see [firecrawl.md](../../../tools/integrations/firecrawl.md), [browserbase.md](../../../tools/integrations/browserbase.md)
+
+---
+
 ## RB2B / Clearbit Reveal
 
 **Use for**: Identifying anonymous site visitors as warm intent signals.

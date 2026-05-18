@@ -69,6 +69,17 @@ The reference local-client-prospector skill uses **website status** as the prima
 
 When the user explicitly asks for subagents AND subagents are available, split candidates into non-overlapping batches and ask each subagent to verify only website/social/contact status. Don't use subagents for the primary search if it slows progress.
 
+### Optional: programmatic verification with Firecrawl or Browserbase
+
+Once you have a candidate's website URL (found via manual Maps/Yelp discovery), you can speed up website-status classification by hitting the URL programmatically:
+
+- **Firecrawl** for simple "is this site live, modern, mobile-friendly, conversion-flow-equipped" reads — returns clean markdown you can inspect
+- **Browserbase** when the candidate site requires JS rendering, has a cookie consent dialog, or you need session state
+
+**Strict line**: use these on the individual business's URL. **Don't** point them at Google Maps, Yelp, or any platform whose ToS prohibits bulk extraction — discovery stays manual.
+
+See [data-sources.md](data-sources.md) for setup details.
+
 ---
 
 ## Qualification Checklist (Local SMB branch)
