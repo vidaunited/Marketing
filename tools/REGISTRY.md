@@ -55,6 +55,7 @@ Quick reference for AI agents to discover tool capabilities and integration meth
 | activecampaign | Email/CRM | ✓ | - | [✓](clis/activecampaign.js) | ✓ | [activecampaign.md](integrations/activecampaign.md) |
 | hunter | Email Outreach | ✓ | - | [✓](clis/hunter.js) | - | [hunter.md](integrations/hunter.md) |
 | snov | Email Outreach | ✓ | - | [✓](clis/snov.js) | - | [snov.md](integrations/snov.md) |
+| truelist | Email Verification | ✓ | - | - | - | [truelist.md](integrations/truelist.md) |
 | lemlist | Email Outreach | ✓ | - | [✓](clis/lemlist.js) | - | [lemlist.md](integrations/lemlist.md) |
 | instantly | Email Outreach | ✓ | - | [✓](clis/instantly.js) | - | [instantly.md](integrations/instantly.md) |
 | google-ads | Ads | ✓ | ✓ | [✓](clis/google-ads.js) | ✓ | [google-ads.md](integrations/google-ads.md) |
@@ -284,6 +285,16 @@ Company and person data enrichment for sales and marketing.
 | **clay** | Waterfall enrichment, outbound | 75+ data providers |
 
 **Agent recommendation**: Clearbit for enrichment. Apollo for prospecting and outbound. ZoomInfo for enterprise B2B data with intent signals. Clay for waterfall enrichment across multiple providers.
+
+### Email Verification
+
+Pre-outreach email deliverability validation.
+
+| Tool | Best For | Notes |
+|------|----------|-------|
+| **truelist** | Bulk + single email deliverability validation | Pay-per-email; classifies as Deliverable/Risky/Undeliverable/Unknown |
+
+**Agent recommendation**: Truelist for any prospect list before outreach — Apollo/ZoomInfo/Hunter data accuracy is typically 60–80%, validation is non-negotiable to keep sender reputation healthy.
 
 ### Reviews
 
