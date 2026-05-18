@@ -1,0 +1,86 @@
+{
+  "skill_name": "ugc-creator-planner",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need a content planner/calendar for my UGC creator business. I have TikTok gifted collabs, paid Instagram Reels, a few UGC marketplace jobs, and I keep missing deadlines.",
+      "expected_output": "Should check for product-marketing.md first. Should recommend a practical low-cost tool stack, likely Google Sheets plus Google Calendar unless the user already uses another tool daily. Should build the planner around collaborations, deliverables, revenue/payments, brand CRM/outreach, and portfolio gaps. Should include backward-planned milestones for each deliverable, not just final due dates. Should create red/yellow/green or similar flag logic for deadlines, missing product/brief/approval, and overdue payments. Should distinguish gifted, paid, retainer, affiliate, and organic work. Should output a usable planner structure with fields, views, reminders, and a daily/weekly workflow.",
+      "assertions": [
+        "Checks for product-marketing.md",
+        "Recommends a low-cost tool stack",
+        "Separates collaborations from deliverables",
+        "Includes deadline and reminder logic",
+        "Tracks paid and gifted collaborations distinctly",
+        "Includes revenue or payment tracking",
+        "Provides daily and weekly workflows"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Can you build me a Notion setup for brand deals? I want to track briefs, product arrival, drafts, posting dates, invoices, gifted collabs, and which brands I should follow up with next.",
+      "expected_output": "Should honor the user's Notion preference while noting any reminder limitations and recommending calendar reminders for hard deadlines. Should propose linked databases or tables for collaborations, deliverables, payments, and brand CRM. Should include status fields, date fields, relationship fields, and views such as Today, This Week, Waiting on Brand, Overdue Payments, Gifted Collabs, and Follow Up Next. Should include formulas or simple flag logic for urgent items. Should include outreach follow-up dates and relationship stages. Should not drift into general social content strategy.",
+      "assertions": [
+        "Uses Notion because the user requested it",
+        "Adds calendar reminders for hard deadlines",
+        "Defines linked databases or equivalent tables",
+        "Includes views for urgent, waiting, payment, gifted, and follow-up work",
+        "Includes red flag or urgency logic",
+        "Keeps focus on creator operations"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I keep accepting gifted collabs and low paying deals. How can my calendar show me whether I am doing too many and which brands to pitch next?",
+      "expected_output": "Should frame this as creator business insight, not just scheduling. Should add revenue/payment tracking with fee, gift value, estimated hours, effective hourly rate, deal type, and brand/niche. Should recommend reports for paid vs gifted ratio, low-value/high-effort deals, overdue payment, repeat brand opportunities, and portfolio gaps. Should include rules for deciding when gifted collaborations are worth accepting. Should recommend a brand CRM/outreach table with next follow-up dates and pitch angles. Should include monthly review workflow to adjust rates, outreach targets, and portfolio priorities.",
+      "assertions": [
+        "Tracks paid versus gifted ratio",
+        "Tracks effective hourly rate or effort/value",
+        "Identifies low-value collaborations",
+        "Includes brand CRM and follow-up dates",
+        "Surfaces portfolio or niche gaps",
+        "Includes monthly business review workflow"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "I have 9 active UGC projects due over the next two weeks. How should I know what comes first, second, and third?",
+      "expected_output": "Should apply priority scoring rather than only sorting by date. Should score deadline urgency, revenue/value, relationship potential, blocker risk, and effort required. Should recommend resolving blockers first when scores are close. Should output a prioritized task table with task, deadline, score, why it matters, and next action. Should include red/yellow/black flags for overdue or due-soon items. Should ask for the specific active projects if not provided, but still give the scoring framework.",
+      "assertions": [
+        "Uses priority scoring",
+        "Includes deadline urgency and value",
+        "Includes blocker risk",
+        "Outputs a prioritized task table",
+        "Explains next action per task",
+        "Does not rely only on chronological sorting"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "I need help with TikTok hooks and Instagram captions for next week.",
+      "expected_output": "Should recognize this is primarily social media content creation, not creator operations planner setup. Should redirect to or cross-reference the social skill for hooks, captions, scheduling, and platform-specific content. May briefly mention that the ugc-creator-planner can track those posts and deadlines, but should not attempt a full planner unless the user asks for tracking or workflow.",
+      "assertions": [
+        "Recognizes this belongs to social",
+        "References social skill",
+        "Does not force planner workflow",
+        "Mentions planner only as optional tracking support"
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "A brand asked me for my UGC rates and whether I offer retainers. What should I charge?",
+      "expected_output": "Should recognize this is primarily pricing and packaging. Should reference the pricing skill for rate strategy, retainers, packages, and monetization. May mention that the planner should track fee, usage rights, deliverables, estimated hours, effective hourly rate, and renewal dates so future pricing decisions use real data.",
+      "assertions": [
+        "Recognizes this belongs to pricing",
+        "References pricing skill",
+        "Mentions planner fields that support pricing decisions",
+        "Does not over-answer detailed rate strategy inside this skill"
+      ],
+      "files": []
+    }
+  ]
+}
