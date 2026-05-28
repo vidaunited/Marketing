@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkedIn Growth Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             margin: 0;
@@ -589,63 +588,74 @@
 
         function updateChart() {
             const data = getStoredData();
-            if (data.history.length === 0) return;
-
-            const ctx = document.getElementById('growthChart').getContext('2d');
-
-            const chartData = {
-                labels: data.history.map(h => h.date),
-                datasets: [
-                    {
-                        label: 'Followers',
-                        data: data.history.map(h => h.followers || 0),
-                        borderColor: '#0a66c2',
-                        backgroundColor: 'rgba(10, 102, 194, 0.1)',
-                        tension: 0.4,
-                        fill: true
-                    },
-                    {
-                        label: 'Connections',
-                        data: data.history.map(h => h.connections || 0),
-                        borderColor: '#00b4ef',
-                        backgroundColor: 'rgba(0, 180, 239, 0.1)',
-                        tension: 0.4,
-                        fill: false
-                    },
-                    {
-                        label: 'Profile Views',
-                        data: data.history.map(h => h.profileViews || 0),
-                        borderColor: '#28a745',
-                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
-                        tension: 0.4,
-                        fill: false
-                    }
-                ]
-            };
-
-            if (growthChart) {
-                growthChart.destroy();
+            if (data.history.length === 0) {
+                document.getElementById('growthChart').textContent = 'No data yet. Add metrics above to see growth chart.';
+                return;
             }
 
-            growthChart = new Chart(ctx, {
-                type: 'line',
-                data: chartData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
+            const canvas = document.getElementById('growthChart');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.offsetWidth;
+            const height = 300;
+
+            canvas.width = width;
+            canvas.height = height;
+
+            const followers = data.history.map(h => h.followers || 0);
+            const maxValue = Math.max(...followers, ...data.history.map(h => h.connections || 0), ...data.history.map(h => h.profileViews || 0)) || 100;
+
+            // Draw background
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw grid
+            ctx.strokeStyle = '#ddd';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = (height / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+
+            const padding = 40;
+            const graphWidth = width - padding * 2;
+            const graphHeight = height - padding * 2;
+
+            // Draw axes
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, height - padding);
+            ctx.lineTo(width - padding, height - padding);
+            ctx.stroke();
+
+            // Plot data
+            const points = data.history.length;
+            const xStep = graphWidth / (points - 1 || 1);
+
+            // Followers line
+            ctx.strokeStyle = '#0a66c2';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            data.history.forEach((h, i) => {
+                const x = padding + (i * xStep);
+                const y = height - padding - ((h.followers || 0) / maxValue) * graphHeight;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
             });
+            ctx.stroke();
+
+            // Legend
+            ctx.fillStyle = '#0a66c2';
+            ctx.fillRect(width - 200, 10, 15, 15);
+            ctx.fillStyle = '#333';
+            ctx.font = '12px Arial';
+            ctx.fillText('Followers', width - 180, 22);
+
+            // No Chart.js needed!
         }
 
         function getTodayDate() {
