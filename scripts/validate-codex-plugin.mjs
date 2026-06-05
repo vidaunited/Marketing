@@ -227,9 +227,33 @@ function validatePlatforms(platforms, manifest) {
     return;
   }
 
+  const requiredPlatformIds = [
+    "codex",
+    "claude-code",
+    "skills-npx",
+    "generic-agent-importers",
+  ];
+
+  for (const platform of platforms.platforms) {
+    if (!isObject(platform)) {
+      errors.push("distribution platform entries must be objects");
+      continue;
+    }
+
+    const label = platform.id || "unknown";
+    for (const field of ["id", "name", "claim", "runtime", "install", "commands", "evidence", "lastVerified"]) {
+      requireString(platform, field, `distribution platform ${label}.${field}`);
+    }
+  }
+
+  for (const platformId of requiredPlatformIds) {
+    if (!platforms.platforms.some((platform) => platform.id === platformId)) {
+      errors.push(`distribution platforms must include ${platformId}`);
+    }
+  }
+
   const codex = platforms.platforms.find((platform) => platform.id === "codex");
   if (!codex) {
-    errors.push("distribution platforms must include codex");
     return;
   }
 
