@@ -91,6 +91,7 @@ Quick reference for AI agents to discover tool capabilities and integration meth
 | gong | Revenue Intelligence | ✓ | - | - | - | [gong.md](integrations/gong.md) |
 | airops | AI Content | ✓ | - | [✓](clis/airops.js) | - | [airops.md](integrations/airops.md) |
 | buffer | Social | ✓ | - | [✓](clis/buffer.js) | - | [buffer.md](integrations/buffer.md) |
+| hermes-tweet | Social | ✓ | - | - | ✓ | [hermes-tweet.md](integrations/hermes-tweet.md) |
 | wistia | Video | ✓ | - | [✓](clis/wistia.js) | - | [wistia.md](integrations/wistia.md) |
 | heygen | Video | ✓ | ✓ | - | ✓ | [heygen.md](integrations/heygen.md) |
 | hyperframes | Video | - | - | ✓ | ✓ | [hyperframes.md](integrations/hyperframes.md) |
@@ -289,8 +290,9 @@ Social media scheduling, management, and analytics.
 | Tool | Best For | Notes |
 |------|----------|-------|
 | **buffer** | Social scheduling, analytics | Multi-platform |
+| **hermes-tweet** | X/Twitter automation for Hermes Agent | Search, monitor, export, and approval-gated actions |
 
-**Agent recommendation**: Buffer for scheduling and analytics across social platforms.
+**Agent recommendation**: Buffer for cross-platform scheduling and analytics. Hermes Tweet for X/Twitter workflows inside Hermes Agent.
 
 ### Video
 
