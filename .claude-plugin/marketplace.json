@@ -1,18 +1,18 @@
 {
   "name": "marketingskills",
   "owner": {
-    "name": "Corey Haines",
-    "url": "https://corey.co"
+    "name": "r0undm1dn1ghty-star",
+    "url": "https://github.com/r0undm1dn1ghty-star"
   },
   "metadata": {
     "description": "Marketing skills for AI agents — conversion optimization, copywriting, SEO, paid ads, and growth",
     "version": "2.4.2",
-    "repository": "https://github.com/coreyhaines31/marketingskills"
+    "repository": "https://github.com/r0undm1dn1ghty-star/marketingskills"
   },
   "plugins": [
     {
       "name": "marketing-skills",
-      "description": "44 marketing skills for technical marketers and founders: CRO, copywriting, cold email, prospecting, SEO, AI SEO, paid ads, SMS, ad creative, video production, image generation, co-marketing, churn prevention, pricing, referrals, revenue operations, sales enablement, customer research, site architecture, comprehensive AARRR-structured marketing plans, public relations and earned media, and more",
+      "description": "44 marketing skills for technical marketers and founders: CRO, copywriting, cold email, prospecting, SEO, AI SEO, paid ads, SMS, ad creative, video production, image generati[...]",
       "source": "./"
     }
   ]
