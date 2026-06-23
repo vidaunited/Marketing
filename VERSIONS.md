@@ -47,9 +47,15 @@ Current versions of all skills. Agents can compare against local versions to che
 | site-architecture | 2.0.0 | 2026-05-05 |
 | sms | 1.0.0 | 2026-05-21 |
 | social | 2.1.0 | 2026-06-10 |
+| humanize-writing | 1.0.0 | 2026-06-23 |
 | video | 2.0.1 | 2026-05-18 |
 
 ## Recent Changes
+
+### 2.5.0 (2026-06-23)
+
+- Added `humanize-writing` skill for detecting and removing AI writing patterns. Eight-pass editorial process: structure tells, significance inflation, AI vocabulary, grammar-level patterns (copula avoidance, superficial -ing analyses, synonym cycling), sentence rhythm and style (em dash / boldface / emoji overuse), hedging / filler / vague attributions, connective tissue, and adding human texture. Based on Wikipedia's Signs of AI writing guide. Use when text "sounds like AI," "too robotic," or needs humanizing.
+- Total skills: 46.
 
 ### 2.4.2 (2026-06-15)
 
