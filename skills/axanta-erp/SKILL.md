@@ -29,17 +29,47 @@ Before querying inventory, gather:
 
 Axanta ERP provides a Python-based MCP server for direct integration with Claude Code.
 
-**Install the MCP server:**
+**1. Install dependencies:**
 
 ```bash
-claude mcp add axanta-erp -- python3 /path/to/axanta_mcp_server.py
+pip install mcp
 ```
 
-Replace `/path/to/axanta_mcp_server.py` with the actual path to your Axanta MCP server script. After adding, restart Claude Code.
+**2. Set environment variables:**
 
-**Verify installation:**
+```bash
+export AXANTA_URL="https://yourinstance.axantacloud.com"
+export AXANTA_DB="your_db_name"
+export AXANTA_USER="your_email"
+export AXANTA_KEY="your_api_key"
+```
 
-Run `/mcp` in Claude Code to confirm `axanta-erp` appears in your MCP server list. Once connected, Axanta tools will be available directly — no manual API calls needed.
+**3. Register the MCP server:**
+
+```bash
+claude mcp add axanta-erp -- python3 tools/mcp-servers/axanta_mcp_server.py
+```
+
+**4. Verify installation:**
+
+Run `/mcp` in Claude Code to confirm `axanta-erp` appears in your MCP server list.
+
+### Available MCP Tools
+
+| Tool | Description | Example prompt |
+|------|-------------|----------------|
+| `search_records` | Search any Odoo model with filters | "search sale orders from last week" |
+| `get_record` | Full details of a single record by ID | "show details for order SO-1234" |
+| `get_sales_summary` | Sales totals, statuses, top customers | "show me the top 5 sales orders" |
+| `get_inventory` | Product stock levels and availability | "check Red Bull stock in all stores" |
+| `get_customers` | Search and list customers | "list customers in Kuwait City" |
+| `get_invoices` | Customer invoices with amounts and status | "show unpaid invoices" |
+| `get_purchase_orders` | Purchase orders from vendors | "list pending purchase orders" |
+| `get_employees` | List employees and details | "show all employees" |
+| `get_stock_movements` | Inventory transfers and movements | "show recent deliveries" |
+| `create_record` | Create a new record | "create a new customer" |
+| `update_record` | Update an existing record | "update product price" |
+| `get_report_data` | Aggregated reports by branch/product | "sales summary by branch" |
 
 ### Manual API Setup (Alternative)
 
