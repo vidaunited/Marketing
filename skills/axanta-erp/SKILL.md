@@ -25,9 +25,25 @@ Before querying inventory, gather:
 
 ## Axanta ERP Connection
 
-### Authentication
+### MCP Server Setup (Recommended)
 
-Axanta ERP requires API access. Verify the user has:
+Axanta ERP provides a Python-based MCP server for direct integration with Claude Code.
+
+**Install the MCP server:**
+
+```bash
+claude mcp add axanta-erp -- python3 /path/to/axanta_mcp_server.py
+```
+
+Replace `/path/to/axanta_mcp_server.py` with the actual path to your Axanta MCP server script. After adding, restart Claude Code.
+
+**Verify installation:**
+
+Run `/mcp` in Claude Code to confirm `axanta-erp` appears in your MCP server list. Once connected, Axanta tools will be available directly — no manual API calls needed.
+
+### Manual API Setup (Alternative)
+
+If the MCP server is not available, Axanta ERP can also be accessed via REST API. Verify the user has:
 
 - **API Base URL**: The Axanta ERP instance endpoint (e.g., `https://{company}.axanta.com/api`)
 - **API Key or Token**: Authentication credentials for the ERP API
