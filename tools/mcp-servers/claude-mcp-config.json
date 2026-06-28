@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "axanta-erp": {
+      "command": "python3",
+      "args": ["tools/mcp-servers/axanta_mcp_server.py"],
+      "env": {
+        "AXANTA_URL": "https://tempcanteen.axantacloud.com",
+        "AXANTA_DB": "tempcanteen",
+        "AXANTA_USER": "mohammed@vimarkets.com",
+        "AXANTA_KEY": "YOUR_API_KEY_HERE"
+      }
+    }
+  }
+}

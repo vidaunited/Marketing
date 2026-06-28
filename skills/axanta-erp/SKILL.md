@@ -25,51 +25,57 @@ Before querying inventory, gather:
 
 ## Axanta ERP Connection
 
-### MCP Server Setup (Recommended)
+### Quick Setup (One Command)
 
-Axanta ERP provides a Python-based MCP server for direct integration with Claude Code.
+```bash
+bash tools/mcp-servers/setup.sh
+```
+
+This installs dependencies, prompts for credentials, and registers the MCP server with Claude Code.
+
+### Manual Setup
 
 **1. Install dependencies:**
 
 ```bash
-pip install mcp
+pip install -r tools/mcp-servers/requirements.txt
 ```
 
-**2. Set environment variables:**
+**2. Register with environment variables:**
 
 ```bash
-export AXANTA_URL="https://yourinstance.axantacloud.com"
-export AXANTA_DB="your_db_name"
-export AXANTA_USER="your_email"
-export AXANTA_KEY="your_api_key"
+claude mcp add axanta-erp \
+  -e AXANTA_URL="https://yourinstance.axantacloud.com" \
+  -e AXANTA_DB="your_db_name" \
+  -e AXANTA_USER="your_email" \
+  -e AXANTA_KEY="your_api_key" \
+  -- python3 tools/mcp-servers/axanta_mcp_server.py
 ```
 
-**3. Register the MCP server:**
-
-```bash
-claude mcp add axanta-erp -- python3 tools/mcp-servers/axanta_mcp_server.py
-```
-
-**4. Verify installation:**
+**3. Verify installation:**
 
 Run `/mcp` in Claude Code to confirm `axanta-erp` appears in your MCP server list.
+
+### Claude Desktop Config
+
+Copy `tools/mcp-servers/claude-mcp-config.json` into your Claude Desktop config file and replace `YOUR_API_KEY_HERE` with your actual API key.
 
 ### Available MCP Tools
 
 | Tool | Description | Example prompt |
 |------|-------------|----------------|
-| `search_records` | Search any Odoo model with filters | "search sale orders from last week" |
-| `get_record` | Full details of a single record by ID | "show details for order SO-1234" |
-| `get_sales_summary` | Sales totals, statuses, top customers | "show me the top 5 sales orders" |
-| `get_inventory` | Product stock levels and availability | "check Red Bull stock in all stores" |
-| `get_customers` | Search and list customers | "list customers in Kuwait City" |
-| `get_invoices` | Customer invoices with amounts and status | "show unpaid invoices" |
-| `get_purchase_orders` | Purchase orders from vendors | "list pending purchase orders" |
-| `get_employees` | List employees and details | "show all employees" |
-| `get_stock_movements` | Inventory transfers and movements | "show recent deliveries" |
-| `create_record` | Create a new record | "create a new customer" |
-| `update_record` | Update an existing record | "update product price" |
-| `get_report_data` | Aggregated reports by branch/product | "sales summary by branch" |
+| `axanta_search_records` | Search any Odoo model with domain filters and pagination | "search sale orders from last week" |
+| `axanta_get_record` | Full details of a single record by ID | "show details for order SO-1234" |
+| `axanta_get_sales_summary` | Sales totals, statuses, top customers | "show me the top 5 sales orders" |
+| `axanta_get_inventory` | Product stock levels and availability | "check Red Bull stock in all stores" |
+| `axanta_get_customers` | Search and list customers with contact info | "list customers in Kuwait City" |
+| `axanta_get_invoices` | Customer invoices with amounts and status | "show unpaid invoices" |
+| `axanta_get_purchase_orders` | Purchase orders from vendors | "list pending purchase orders" |
+| `axanta_get_employees` | List employees and details | "show all employees" |
+| `axanta_get_stock_movements` | Inventory transfers and movements | "show recent deliveries" |
+| `axanta_create_record` | Create a new record in any model | "create a new customer" |
+| `axanta_update_record` | Update an existing record | "update product price" |
+| `axanta_get_report` | Aggregated reports by branch/product/customer | "sales summary by branch" |
 
 ### Manual API Setup (Alternative)
 
