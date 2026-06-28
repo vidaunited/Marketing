@@ -32,7 +32,7 @@ Axanta ERP provides a Python-based MCP server for direct integration with Claude
 **1. Install dependencies:**
 
 ```bash
-pip install mcp
+pip install "mcp[cli]" pydantic
 ```
 
 **2. Set environment variables:**
@@ -58,18 +58,18 @@ Run `/mcp` in Claude Code to confirm `axanta-erp` appears in your MCP server lis
 
 | Tool | Description | Example prompt |
 |------|-------------|----------------|
-| `search_records` | Search any Odoo model with filters | "search sale orders from last week" |
-| `get_record` | Full details of a single record by ID | "show details for order SO-1234" |
-| `get_sales_summary` | Sales totals, statuses, top customers | "show me the top 5 sales orders" |
-| `get_inventory` | Product stock levels and availability | "check Red Bull stock in all stores" |
-| `get_customers` | Search and list customers | "list customers in Kuwait City" |
-| `get_invoices` | Customer invoices with amounts and status | "show unpaid invoices" |
-| `get_purchase_orders` | Purchase orders from vendors | "list pending purchase orders" |
-| `get_employees` | List employees and details | "show all employees" |
-| `get_stock_movements` | Inventory transfers and movements | "show recent deliveries" |
-| `create_record` | Create a new record | "create a new customer" |
-| `update_record` | Update an existing record | "update product price" |
-| `get_report_data` | Aggregated reports by branch/product | "sales summary by branch" |
+| `axanta_search_records` | Search any Odoo model with domain filters and pagination | "search sale orders from last week" |
+| `axanta_get_record` | Full details of a single record by ID | "show details for order SO-1234" |
+| `axanta_get_sales_summary` | Sales totals, statuses, top customers | "show me the top 5 sales orders" |
+| `axanta_get_inventory` | Product stock levels and availability | "check Red Bull stock in all stores" |
+| `axanta_get_customers` | Search and list customers with contact info | "list customers in Kuwait City" |
+| `axanta_get_invoices` | Customer invoices with amounts and status | "show unpaid invoices" |
+| `axanta_get_purchase_orders` | Purchase orders from vendors | "list pending purchase orders" |
+| `axanta_get_employees` | List employees and details | "show all employees" |
+| `axanta_get_stock_movements` | Inventory transfers and movements | "show recent deliveries" |
+| `axanta_create_record` | Create a new record in any model | "create a new customer" |
+| `axanta_update_record` | Update an existing record | "update product price" |
+| `axanta_get_report` | Aggregated reports by branch/product/customer | "sales summary by branch" |
 
 ### Manual API Setup (Alternative)
 
