@@ -25,34 +25,40 @@ Before querying inventory, gather:
 
 ## Axanta ERP Connection
 
-### MCP Server Setup (Recommended)
+### Quick Setup (One Command)
 
-Axanta ERP provides a Python-based MCP server for direct integration with Claude Code.
+```bash
+bash tools/mcp-servers/setup.sh
+```
+
+This installs dependencies, prompts for credentials, and registers the MCP server with Claude Code.
+
+### Manual Setup
 
 **1. Install dependencies:**
 
 ```bash
-pip install "mcp[cli]" pydantic
+pip install -r tools/mcp-servers/requirements.txt
 ```
 
-**2. Set environment variables:**
+**2. Register with environment variables:**
 
 ```bash
-export AXANTA_URL="https://yourinstance.axantacloud.com"
-export AXANTA_DB="your_db_name"
-export AXANTA_USER="your_email"
-export AXANTA_KEY="your_api_key"
+claude mcp add axanta-erp \
+  -e AXANTA_URL="https://yourinstance.axantacloud.com" \
+  -e AXANTA_DB="your_db_name" \
+  -e AXANTA_USER="your_email" \
+  -e AXANTA_KEY="your_api_key" \
+  -- python3 tools/mcp-servers/axanta_mcp_server.py
 ```
 
-**3. Register the MCP server:**
-
-```bash
-claude mcp add axanta-erp -- python3 tools/mcp-servers/axanta_mcp_server.py
-```
-
-**4. Verify installation:**
+**3. Verify installation:**
 
 Run `/mcp` in Claude Code to confirm `axanta-erp` appears in your MCP server list.
+
+### Claude Desktop Config
+
+Copy `tools/mcp-servers/claude-mcp-config.json` into your Claude Desktop config file and replace `YOUR_API_KEY_HERE` with your actual API key.
 
 ### Available MCP Tools
 
