@@ -5,12 +5,24 @@ Connects to Axanta (Odoo) via XML-RPC. Exposes sales, inventory, customers,
 invoices, purchases, employees, stock movements, and reports.
 
 Setup:
-    pip install mcp
+    pip install -r tools/mcp-servers/requirements.txt
     export AXANTA_URL="https://yourinstance.axantacloud.com"
     export AXANTA_DB="your_db_name"
     export AXANTA_USER="your_email"
     export AXANTA_KEY="your_api_key"
     claude mcp add axanta-erp -- python3 tools/mcp-servers/axanta_mcp_server.py
+
+Connection: the ERP login happens lazily on the first tool call, not at
+import time, so a missing variable or an unreachable host surfaces as a
+JSON error in the tool result instead of a traceback that kills the server
+before it can even list its tools.
+
+Writes: `create_record` / `update_record` only accept models listed in
+WRITABLE_MODELS below. It ships EMPTY — the read tools cover the models this
+server was written for (see READ_MODELS) and nothing here has ever needed a
+write. To allow one, either add it to WRITABLE_MODELS in this file or set
+AXANTA_WRITABLE_MODELS="res.partner,sale.order" (comma-separated) in the
+environment; both are unioned. Read tools are deliberately not restricted.
 """
 
 import asyncio
@@ -22,18 +34,71 @@ import mcp.server.stdio
 import mcp.types as types
 from mcp.server import Server
 
-ODOO_URL  = os.environ.get("AXANTA_URL", "")
-ODOO_DB   = os.environ.get("AXANTA_DB", "")
-ODOO_USER = os.environ.get("AXANTA_USER", "")
-ODOO_KEY  = os.environ.get("AXANTA_KEY", "")
+# Models the built-in read tools query. Documented here as the server's known
+# surface; `search_records` / `get_record` accept any model on purpose so
+# reporting models (report.*) stay reachable.
+READ_MODELS = frozenset({
+    "sale.order", "sale.order.line", "purchase.order", "account.move",
+    "stock.picking", "stock.quant", "res.partner", "product.product",
+    "product.template", "hr.employee", "account.payment",
+})
 
-common = xmlrpc.client.ServerProxy(f"{ODOO_URL}/xmlrpc/2/common")
-models = xmlrpc.client.ServerProxy(f"{ODOO_URL}/xmlrpc/2/object")
-uid    = common.authenticate(ODOO_DB, ODOO_USER, ODOO_KEY, {})
+# Models the write tools may touch. Empty by design — extend deliberately
+# (see the module docstring). AXANTA_WRITABLE_MODELS is read once at startup.
+WRITABLE_MODELS: frozenset[str] = frozenset()
+_ENV_WRITABLE = frozenset(
+    m.strip() for m in os.environ.get("AXANTA_WRITABLE_MODELS", "").split(",") if m.strip()
+)
+ALLOWED_WRITE_MODELS = WRITABLE_MODELS | _ENV_WRITABLE
+
+_REQUIRED_ENV = ("AXANTA_URL", "AXANTA_DB", "AXANTA_USER", "AXANTA_KEY")
+_conn: tuple[xmlrpc.client.ServerProxy, int, str, str] | None = None
+
+
+class AxantaError(Exception):
+    """A configuration, connection, or policy error reported to the caller."""
+
+
+def _connect() -> tuple[xmlrpc.client.ServerProxy, int, str, str]:
+    """Authenticate on first use and cache the session for the process."""
+    global _conn
+    if _conn is not None:
+        return _conn
+
+    missing = [k for k in _REQUIRED_ENV if not os.environ.get(k)]
+    if missing:
+        raise AxantaError(
+            "Axanta connection not configured: set " + ", ".join(missing)
+        )
+    url = os.environ["AXANTA_URL"].rstrip("/")
+    db, user, key = (os.environ[k] for k in _REQUIRED_ENV[1:])
+
+    try:
+        common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common")
+        uid = common.authenticate(db, user, key, {})
+    except Exception as e:  # network, TLS, XML-RPC fault, bad URL
+        raise AxantaError(f"Could not reach Axanta at {url}: {e}") from e
+    if not uid:
+        raise AxantaError(
+            "Axanta authentication failed: check AXANTA_DB, AXANTA_USER, AXANTA_KEY"
+        )
+
+    _conn = (xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/object"), uid, db, key)
+    return _conn
 
 
 def q(model, method, args=None, kw=None):
-    return models.execute_kw(ODOO_DB, uid, ODOO_KEY, model, method, args or [], kw or {})
+    models, uid, db, key = _connect()
+    return models.execute_kw(db, uid, key, model, method, args or [], kw or {})
+
+
+def _check_writable(model: str) -> None:
+    if model not in ALLOWED_WRITE_MODELS:
+        allowed = ", ".join(sorted(ALLOWED_WRITE_MODELS)) or "(none)"
+        raise AxantaError(
+            f"Writes to '{model}' are not allowed. Allowed write models: {allowed}. "
+            "Extend WRITABLE_MODELS in axanta_mcp_server.py or set AXANTA_WRITABLE_MODELS."
+        )
 
 
 app = Server("axanta-erp")
@@ -112,14 +177,14 @@ async def list_tools() -> list[types.Tool]:
             }}),
         types.Tool(
             name="create_record",
-            description="Create a new record (e.g. customer, product, sale order)",
+            description="Create a new record. Only models in the write allowlist are accepted (empty by default; see AXANTA_WRITABLE_MODELS)",
             inputSchema={"type": "object", "properties": {
                 "model":  {"type": "string"},
                 "values": {"type": "object"},
             }, "required": ["model", "values"]}),
         types.Tool(
             name="update_record",
-            description="Update fields of an existing record",
+            description="Update fields of an existing record. Only models in the write allowlist are accepted (empty by default; see AXANTA_WRITABLE_MODELS)",
             inputSchema={"type": "object", "properties": {
                 "model":  {"type": "string"},
                 "id":     {"type": "integer"},
@@ -224,11 +289,13 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
                         "order": "date_done desc"})
 
         elif name == "create_record":
+            _check_writable(arguments["model"])
             new_id = q(arguments["model"], "create", [arguments["values"]])
             result = {"success": True, "id": new_id,
                       "message": f"Created {arguments['model']} with ID {new_id}"}
 
         elif name == "update_record":
+            _check_writable(arguments["model"])
             q(arguments["model"], "write",
               [[arguments["id"]], arguments["values"]])
             result = {"success": True,

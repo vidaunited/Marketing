@@ -1,10 +1,19 @@
 #!/bin/bash
+set -euo pipefail
 
 # Validation script using official skills-ref library
 # https://github.com/agentskills/agentskills/tree/main/skills-ref
 
+# Resolve this repo's directory BEFORE any `cd`. The script used to run
+# `cd "$(dirname "$0")"` after cd-ing into /tmp for the install step; with a
+# relative $0 (e.g. `bash validate-skills-official.sh`) that resolved against
+# /tmp/agentskills/skills-ref, so the first run validated nothing
+# ("Path 'skills/*/' does not exist") and only a second run — which skips the
+# install step and its cd — worked.
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILLS_DIR="skills"
-SKILLS_REF_DIR="/tmp/agentskills/skills-ref"
+SKILLS_ROOT="/tmp/agentskills"
+SKILLS_REF_DIR="$SKILLS_ROOT/skills-ref"
 
 echo "🔍 Validating Skills Using Official skills-ref Library"
 echo "========================================================"
@@ -17,8 +26,7 @@ if [ ! -d "$SKILLS_REF_DIR/.venv" ]; then
     echo ""
 
     if [ ! -d "$SKILLS_REF_DIR" ]; then
-        cd /tmp
-        git clone https://github.com/agentskills/agentskills.git
+        git clone https://github.com/agentskills/agentskills.git "$SKILLS_ROOT"
     fi
 
     cd "$SKILLS_REF_DIR"
@@ -29,6 +37,7 @@ if [ ! -d "$SKILLS_REF_DIR/.venv" ]; then
     else
         echo "Using pip to install..."
         python3 -m venv .venv
+        # shellcheck disable=SC1091
         source .venv/bin/activate
         pip install -e .
     fi
@@ -36,10 +45,11 @@ if [ ! -d "$SKILLS_REF_DIR/.venv" ]; then
 fi
 
 # Activate the virtual environment
+# shellcheck disable=SC1091
 source "$SKILLS_REF_DIR/.venv/bin/activate"
 
-# Return to the original directory
-cd "$(dirname "$0")"
+# Return to the repo directory captured above (never $0-relative after a cd)
+cd "$REPO_DIR"
 
 # Track results
 PASSED=0
@@ -54,13 +64,14 @@ for skill_dir in "$SKILLS_DIR"/*/; do
     skill_name=$(basename "$skill_dir")
     printf "  %-30s" "$skill_name"
 
-    output=$(skills-ref validate "$skill_dir" 2>&1)
+    # `|| true`: a failed validation must not abort the loop under `set -e`.
+    output=$(skills-ref validate "$skill_dir" 2>&1) || true
     if echo "$output" | grep -q "Valid skill"; then
         echo "✓"
-        ((PASSED++))
+        PASSED=$((PASSED + 1))
     else
         echo "✗"
-        ((FAILED++))
+        FAILED=$((FAILED + 1))
         FAILED_SKILLS+=("$skill_name")
         echo "$output" | sed 's/^/    /'
     fi
@@ -73,7 +84,7 @@ echo "  ✓ Passed: $PASSED"
 echo "  ✗ Failed: $FAILED"
 echo ""
 
-if [ $FAILED -eq 0 ]; then
+if [ "$FAILED" -eq 0 ]; then
     echo "✅ All skills are valid!"
     exit 0
 else
