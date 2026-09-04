@@ -94,7 +94,9 @@ See each skill's **Related Skills** section for the full dependency map.
 | [public-relations](skills/public-relations/) | When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy... |
 | [referrals](skills/referrals/) | When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy.... |
 | [revops](skills/revops/) | When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes.... |
+| [sales-automation-selection](skills/sales-automation-selection/) | When the user needs to choose, compare, or roll out automation for a sales operation — CRM, workflow tools, RPA, or AI sales agents — and... |
 | [sales-enablement](skills/sales-enablement/) | When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also... |
+| [sales-process-audit](skills/sales-process-audit/) | When the user wants to find out where a sales process is leaking revenue and what to fix first. Use when the user mentions "sales process... |
 | [schema](skills/schema/) | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user... |
 | [seo-audit](skills/seo-audit/) | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO... |
 | [signup](skills/signup/) | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the... |
@@ -306,6 +308,8 @@ You can also invoke skills directly:
 ### Sales & RevOps
 - `revops` - Lead lifecycle, scoring, routing, pipeline management
 - `sales-enablement` - Sales decks, one-pagers, objection docs, demo scripts
+- `sales-process-audit` - Find and rank where a sales process leaks revenue (pipeline and retail)
+- `sales-automation-selection` - Choose CRM, workflow, RPA or AI-agent automation by business size and roll it out
 
 ## Contributing
 

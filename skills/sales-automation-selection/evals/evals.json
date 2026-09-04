@@ -1,0 +1,46 @@
+{
+  "skill_name": "sales-automation-selection",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're a 6-person B2B agency on spreadsheets. Should we buy Salesforce?",
+      "expected_output": "Should check for product-marketing.md and whether an audit exists. Should capture size, system of record, integration surface, budget shape and regulatory floor. Should apply the layer order: for six seats recommend a small-business CRM (Zoho, Pipedrive or HubSpot Starter) rather than Salesforce, show a 2–3 candidate comparison on the six criteria with a runner-up, quote price ranges with a 'confirm on vendor page' caveat, and give a pilot-first rollout with a baseline.",
+      "assertions": [
+        "Checks for product-marketing.md and an existing audit",
+        "Captures the five inputs",
+        "Recommends a small-business CRM, not Salesforce, for six seats",
+        "Compares 2–3 candidates on six criteria and names the runner-up",
+        "Quotes prices as ranges with a verification caveat",
+        "Provides a pilot-first rollout with a baseline"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "We have 15 shops on an ERP and keep running out of fast-moving items. Which automation tool should we buy?",
+      "expected_output": "Should recognise a retail / ERP-led business and put the reorder rule and stock alert inside the ERP or POS, not in a CRM. Should propose a connector layer only to carry alerts to email or chat, and an owner per alert. Should ask for the audit baseline (stockouts with demand, replenishment lag) and cite the retail evidence in references. Should not propose a CRM for walk-in customers.",
+      "assertions": [
+        "Identifies retail / ERP-led model",
+        "Places reorder and alert logic in the ERP or POS",
+        "Uses a connector only to deliver alerts",
+        "Does not recommend a CRM for walk-in customers",
+        "Requires a baseline of stockouts and replenishment lag",
+        "Assigns an owner to each alert"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Our CRM rollout last year failed and nobody uses it. We want to try an AI sales agent now.",
+      "expected_output": "Should explain that most failures are adoption, data and training, not technology, with the cited breakdown, and that an AI agent on top of unused, dirty data will fail the same way. Should sequence: audit, data cleanup, stage definitions, adoption fix in the existing CRM, then a per-outcome agent pilot with human review. Should cite the low trust figures for agents on core processes and require human-in-the-loop on money and customer contact.",
+      "assertions": [
+        "Attributes failure to adoption, data and training with cited figures",
+        "Refuses to layer an agent on unused, dirty data",
+        "Sequences audit → data cleanup → definitions → adoption → agent pilot",
+        "Requires human-in-the-loop on money and customer contact",
+        "Proposes per-outcome pricing for the pilot"
+      ],
+      "files": []
+    }
+  ]
+}
