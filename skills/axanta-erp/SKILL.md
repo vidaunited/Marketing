@@ -3,7 +3,7 @@ name: axanta-erp
 description: "When the user wants to check product stock levels, inventory quantities, or availability across stores using Axanta ERP. Use when the user says 'check stock,' 'product quantity,' 'how many units,' 'inventory levels,' 'store availability,' 'stock check,' 'what's in stock,' 'Axanta,' 'warehouse quantity,' 'store inventory,' or 'product availability by store.' For general analytics, see analytics."
 metadata:
   version: 1.0.0
-  author: Corey Haines
+  author: vidaunited
 ---
 
 # Axanta ERP — Product Quantity by Store

@@ -9,7 +9,9 @@ Current versions of all skills. Agents can compare against local versions to che
 | ai-seo | 2.1.0 | 2026-06-15 |
 | analytics | 2.0.0 | 2026-05-05 |
 | aso | 2.0.0 | 2026-05-05 |
+| axanta-erp | 1.0.0 | 2026-09-04 |
 | churn-prevention | 2.0.0 | 2026-05-05 |
+| claude-ads | 1.0.0 | 2026-06-24 |
 | co-marketing | 2.0.0 | 2026-05-05 |
 | cold-email | 2.0.0 | 2026-05-05 |
 | community-marketing | 2.0.0 | 2026-05-05 |
