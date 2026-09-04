@@ -42,7 +42,9 @@ Current versions of all skills. Agents can compare against local versions to che
 | public-relations | 1.0.0 | 2026-06-10 |
 | referrals | 2.0.0 | 2026-05-05 |
 | revops | 2.0.0 | 2026-05-05 |
+| sales-automation-selection | 1.0.0 | 2026-09-04 |
 | sales-enablement | 2.0.0 | 2026-05-05 |
+| sales-process-audit | 1.0.0 | 2026-09-04 |
 | schema | 2.0.0 | 2026-05-05 |
 | seo-audit | 2.0.0 | 2026-05-05 |
 | signup | 2.0.0 | 2026-05-05 |
@@ -52,6 +54,12 @@ Current versions of all skills. Agents can compare against local versions to che
 | video | 2.0.1 | 2026-05-18 |
 
 ## Recent Changes
+
+### 2.5.0 (2026-09-04)
+
+- **sales-process-audit** (new, 1.0.0): finds where a sales process leaks revenue and what to fix first. Six-step audit — map the process as it actually runs, baseline eight metrics, run a defect catalogue with research-backed thresholds (pipeline: slow lead response, orphaned leads, decayed CRM data, undefined stages, forecast drift, dead pipeline, quote leakage, no follow-up cadence; retail / POS: stockouts with demand, overstock, negative stock and unposted receipts, cost/price integrity, per-branch rates, replenishment lag, branch deviation, silent automation), root-cause data vs process, rank by money with confidence labels, name the smallest fix. `references/benchmarks.md` carries every threshold's source (Salesforce State of Sales 2024/2026, HBR lead-response study, Gartner/Validity data-decay figures, IHL 2025 inventory distortion, McKinsey fresh-food replenishment).
+- **sales-automation-selection** (new, 1.0.0): chooses and rolls out automation for a sales operation by business size — CRM, connector/workflow tools, RPA, AI sales agents, BI — with a six-criterion comparison method, a layer order (rule in the system of record → connector → RPA → agent), a size matrix, and a rollout that survives contact (baseline, map before automate, clean data before migrating, pilot one cycle, human in the loop, owner per alert, 30/90/180-day reviews). `references/platform-comparison.md` holds 2026 list prices with dates and sources (Microsoft figures primary, the rest flagged secondary); `references/rollout-and-risks.md` holds the failure statistics, change-management evidence, a Gulf regulatory example (Saudi PDPL) and a phase checklist.
+- Marketplace description and README updated to 48 skills; `revops` cross-references both new skills.
 
 ### 2.4.2 (2026-06-15)
 

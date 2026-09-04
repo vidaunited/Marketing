@@ -1,0 +1,46 @@
+{
+  "skill_name": "sales-process-audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our B2B software company has 3 sales reps and revenue has been flat for two quarters. Leads come in through the website into HubSpot. Where are we losing sales?",
+      "expected_output": "Should check for product-marketing.md first. Should identify the pipeline model and ask for or read the HubSpot data. Should baseline the eight metrics (at minimum response time, orphaned leads, data completeness, selling-time share, forecast error). Should run the pipeline defect catalogue with thresholds (median response > 60 min, orphaned leads > 5%, incomplete records > 25%). Should rank findings by annual cost with an explicit confidence label, name the smallest fix per defect (often a HubSpot workflow, not a new tool), and include a 'not found / not tested' section.",
+      "assertions": [
+        "Checks for product-marketing.md",
+        "Identifies the pipeline sales model",
+        "Baselines metrics before proposing fixes",
+        "Applies the pipeline defect catalogue with thresholds",
+        "Ranks defects by annual cost with confidence labels",
+        "Names a smallest fix and proof metric per defect",
+        "Includes a not-found / not-tested section"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "We run 15 grocery branches on an ERP. Sales are down in two branches and the buyer says the reports look fine. Audit the sales process.",
+      "expected_output": "Should switch to the retail / POS defect catalogue. Should insist on per-branch rates rather than chain averages. Should test stockouts with demand, negative stock and unposted receipts, cost or price integrity (cost = 0), replenishment lag, branch deviation (±40%), and silent automation (reports nobody acts on). Should separate data causes from process causes. Should compute stockout cost as daily rate × margin × days out and rank the two branches' findings by money.",
+      "assertions": [
+        "Uses the retail / POS defect catalogue",
+        "Measures per branch, not chain-wide",
+        "Tests stockouts, negative stock, cost/price integrity and replenishment lag",
+        "Checks whether existing reports have an owner and a closed-loop action",
+        "Separates data causes from process causes",
+        "Estimates cost with stated arithmetic and confidence"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Just tell me what to automate in our sales team first. We have Zoho CRM and 8 reps.",
+      "expected_output": "Should refuse to pick an automation before a baseline exists: should ask for or estimate the eight metrics, run the catalogue, and rank by money. Should explain that automating an undefined step makes a bad process faster. Should then map the top defect to the smallest automation, preferring a rule inside Zoho over a new platform for a team this size, and point to sales-automation-selection for platform choice.",
+      "assertions": [
+        "Does not recommend automation before a baseline",
+        "Ranks by money rather than by the loudest complaint",
+        "Prefers a rule in the existing CRM for a small team",
+        "References sales-automation-selection for platform choice"
+      ],
+      "files": []
+    }
+  ]
+}
